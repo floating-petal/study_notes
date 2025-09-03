@@ -1,3 +1,16 @@
+# conda
+安装：进入https://github.com/conda-forge/miniforge，选择对应版本下载
+
+[安装参考文档](https://blog.csdn.net/lhyyds/article/details/139448689)
+## cuda环境
+```
+conda create -n robosim python=3.10 -y
+conda activate robosim
+conda install -c "nvidia/label/cuda-12.1.0" cuda-toolkit -y
+pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+pip install --no-build-isolation flash-attn==2.7.1.post4
+```
+
 # UV
 
 ## 安装
@@ -34,14 +47,13 @@ launch.json
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "GROOT",
+            "name": "DebugCodes",
             "type": "debugpy",
             "request": "attach",
-            "listen": {
+            "connect": {
                 "host": "localhost",
-                "port":12361
+                "port": 9501
             },
            "justMyCode": false
         }
@@ -51,9 +63,11 @@ launch.json
 代码内加入：
 ```python
 import os
-if os.getenv("DEBUGPY", None):
-    import debugpy; debugpy.connect(12361)
-    print("Debugger is attached, continue running...")
+if bool(int(os.getenv("DEBUGPY", 0))):
+    import debugpy
+    debugpy.listen(("localhost", 9501))
+    print("Waiting for debugger attach")
+    debugpy.wait_for_client()
 ```
 # SSH
 无密码连接：
