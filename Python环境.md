@@ -1,5 +1,27 @@
 # conda
-安装：进入https://github.com/conda-forge/miniforge，选择对应版本下载
+安装：进入[github官方地址](https://github.com/conda-forge/miniforge)，选择对应版本下载
+```
+bash Miniforge3-25.3.1-0-Linux-x86_64.sh
+```
+最后会出现
+```
+installation finished.
+Do you wish to update your shell profile to automatically initialize conda?
+This will activate conda on startup and change the command prompt when activated.
+If you'd prefer that conda's base environment not be activated on startup,
+   run the following command when conda is activated:
+
+conda config --set auto_activate_base false
+
+You can undo this by running `conda init --reverse $SHELL`? [yes|no]
+[no] >>>
+```
+这里需要选择yes，每次会自动进入base环境，如果没选择的话，则需要手动运行：
+```
+eval "$(/data/yqf/miniforge3/bin/conda shell.bash hook)"
+conda init
+```
+
 
 [安装参考文档](https://blog.csdn.net/lhyyds/article/details/139448689)
 ## cuda环境
