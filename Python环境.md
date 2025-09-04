@@ -33,6 +33,18 @@ pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorc
 pip install --no-build-isolation flash-attn==2.7.1.post4
 ```
 
+## pip换源
+临时换源
+```bash
+pip install XXX -i http://mirrors.tencentyun.com/pypi/simple --trusted-host mirrors.tencentyun.com
+
+清华：https://pypi.tuna.tsinghua.edu.cn/simple/
+阿里云：https://mirrors.aliyun.com/pypi/simple/
+中国科技大学：https://pypi.mirrors.ustc.edu.cn/simple/
+华为云： https://repo.huaweicloud.com/repository/pypi/simple/
+腾讯云：https://mirrors.cloud.tencent.com/pypi/simple/
+```
+
 # UV
 
 ## 安装
